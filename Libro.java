@@ -1,4 +1,4 @@
-public class Libro extends ItemBiblioteca{
+public class Libro extends ItemBiblioteca {
     private String autor;
 
     public Libro(String id, String titulo, boolean estadoPrestado, String autor) {
@@ -6,21 +6,18 @@ public class Libro extends ItemBiblioteca{
         this.autor = autor;
     }
 
-    public String getAutor() {
-        return autor;
-    }
-
-    public void setAutor(String autor) {
-        this.autor = autor;
-    }
-
     @Override
     public double calcularMulta(int diasRetraso) {
-        return 0.50;
+        return diasRetraso * 0.50;
     }
 
     @Override
     public int getDiasMaximosPrestamo() {
         return 14;
+    }
+
+    @Override
+    public String toString() {
+        return "LIBRO -> " + super.toString() + " | Autor: " + autor;
     }
 }

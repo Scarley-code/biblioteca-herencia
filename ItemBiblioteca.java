@@ -6,15 +6,11 @@ public abstract class ItemBiblioteca {
     public ItemBiblioteca(String id, String titulo, boolean estadoPrestado) {
         this.id = id;
         this.titulo = titulo;
-        this.estadoPrestado = false;
+        this.estadoPrestado = estadoPrestado;
     }
 
     public String getId() {
         return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getTitulo() {
@@ -29,18 +25,19 @@ public abstract class ItemBiblioteca {
         return estadoPrestado;
     }
 
-    public void setEstadoPrestado(boolean estadoPrestado) {
-        this.estadoPrestado = estadoPrestado;
+    public void prestar() {
+        this.estadoPrestado = true;
     }
 
-    public void prestar(boolean estadoPrestado) {
-        estadoPrestado = true;
-    }
-
-    public void devolver(boolean estadoPrestado) {
-        estadoPrestado = false;
+    public void devolver() {
+        this.estadoPrestado = false;
     }
 
     public abstract double calcularMulta(int diasRetraso);
     public abstract int getDiasMaximosPrestamo();
+
+    @Override
+    public String toString() {
+        return "ID: " + id + " | Título: " + titulo + " | Prestado: " + (estadoPrestado ? "Sí" : "No");
+    }
 }
